@@ -241,11 +241,13 @@ button{
     <h1>Some Image✨</h1>
 
     <div class="gallery">
-      <img src="img1.jpg">
-      <img src="img2.jpg">
-      <img src="img3.jpg">
-      <img src="img4.jpg">
-    </div>
+      
+  <img src="img1.jpg" onclick="openViewer(0)">
+  <img src="img2.jpg" onclick="openViewer(1)">
+  <img src="img3.jpg" onclick="openViewer(2)">
+  <img src="img4.jpg" onclick="openViewer(3)">
+      
+</div>
 
     <button onclick="nextScreen('screen5')">
       Next ❤️
@@ -357,6 +359,63 @@ function startTyping(){
   type();
 }
 
+  const images = [
+  "img1.jpg",
+  "img2.jpg",
+  "img3.jpg",
+  "img4.jpg",
+  "img5.jpg",
+  "img6.jpg"
+];
+
+let currentImage = 0;
+
+function openViewer(index){
+
+  currentImage = index;
+
+  document.querySelectorAll(".screen")
+  .forEach(s=>s.classList.remove("active"));
+
+  document.getElementById("viewer")
+  .classList.add("active");
+
+  document.getElementById("viewerImg").src =
+  images[currentImage];
+}
+
+function nextImage(){
+
+  currentImage++;
+
+  if(currentImage >= images.length){
+    currentImage = 0;
+  }
+
+  document.getElementById("viewerImg").src =
+  images[currentImage];
+}
+
+function prevImage(){
+
+  currentImage--;
+
+  if(currentImage < 0){
+    currentImage = images.length - 1;
+  }
+
+  document.getElementById("viewerImg").src =
+  images[currentImage];
+}
+
+function closeViewer(){
+
+  document.querySelectorAll(".screen")
+  .forEach(s=>s.classList.remove("active"));
+
+  document.getElementById("gallery")
+  .classList.add("active");
+}
 </script>
 
 </body>
