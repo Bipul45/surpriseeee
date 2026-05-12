@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Bhavya ❤️</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:'Poppins',sans-serif;
+  overflow:hidden;
+  background:#06001a;
+}
+
+/* animated background */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+  radial-gradient(circle at top left,#ff00c8,transparent 25%),
+  radial-gradient(circle at bottom right,#00ffe7,transparent 25%),
+  radial-gradient(circle at center,#3b0066,transparent 60%);
+  animation:bgMove 8s infinite alternate;
+  z-index:-3;
+}
+
+@keyframes bgMove{
+  0%{transform:scale(1) rotate(0deg);}
+  100%{transform:scale(1.2) rotate(2deg);}
+}
+
+.stars{
+  position:fixed;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  z-index:-2;
+}
+
+.star{
+  position:absolute;
+  width:3px;
+  height:3px;
+  background:white;
+  border-radius:50%;
+  animation:blink 2s infinite;
+}
+
+@keyframes blink{
+  0%,100%{opacity:0.2;}
+  50%{opacity:1;}
+}
+
+.container{
+  width:100%;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+.card{
+  width:100%;
+  max-width:360px;
+  padding:30px 20px;
+  border-radius:28px;
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,0.15);
+  box-shadow:0 0 30px rgba(255,0,200,0.4);
+  text-align:center;
+  animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+  from{box-shadow:0 0 20px #ff00c8;}
+  to{box-shadow:0 0 35px #7b2cff;}
+}
+
+h1{
+  color:white;
+  font-size:32px;
+  margin-bottom:15px;
+  text-shadow:0 0 15px #ff00c8;
+}
+
+p{
+  color:#f5f5f5;
+  line-height:1.7;
+  font-size:15px;
+}
+
+button{
+  margin-top:25px;
+  border:none;
+  padding:14px 24px;
+  border-radius:50px;
+  background:linear-gradient(45deg,#ff2e63,#9c6bff);
+  color:white;
+  font-size:15px;
+  font-weight:600;
+  width:100%;
+  box-shadow:0 0 15px rgba(255,0,200,0.5);
+}
+
+.screen{
+  display:none;
+}
+
+.active{
+  display:block;
+}
+
+.cake{
+  font-size:120px;
+  animation:float 2s infinite alternate;
+}
+
+@keyframes float{
+  from{transform:translateY(0px);}
+  to{transform:translateY(-12px);}
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-top:20px;
+}
+
+.gallery img{
+  width:100%;
+  height:120px;
+  border-radius:18px;
+  object-fit:cover;
+  border:2px solid rgba(255,255,255,0.2);
+}
+
+.firework{
+  position:fixed;
+  font-size:22px;
+  animation:boom 2s linear infinite;
+}
+
+@keyframes boom{
+  0%{
+    transform:translateY(100vh) scale(0);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(-20vh) scale(1.8);
+    opacity:0;
+  }
+}
+
+.type{
+  min-height:130px;
+}
+
+@media(max-width:480px){
+
+  h1{
+    font-size:28px;
+  }
+
+  .card{
+    padding:25px 18px;
+  }
+
+}
+</style>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<div class="container">
+
+  <!-- SCREEN 1 -->
+  <div class="card screen active" id="screen1">
+
+    <h1>Happy Birthday Bharti ❤️</h1>
+
+    <p>
+      A magical surprise is waiting for you ✨
+    </p>
+
+    <button onclick="nextScreen('screen2')">
+      🎁 CLICK HERE TO SEE YOUR SURPRISE 🎁
+    </button>
+
+  </div>
+
+
+  <!-- SCREEN 2 -->
+  <div class="card screen" id="screen2">
+
+    <h1>Magical Cake Time ✨</h1>
+
+    <div class="cake">🎂</div>
+
+    <button onclick="nextScreen('screen3')">
+      BEGIN MAGIC →
+    </button>
+
+  </div>
+
+
+  <!-- SCREEN 3 -->
+  <div class="card screen" id="screen3">
+
+    <h1>Happy Birthday Ma'am 💖</h1>
+
+    <p class="type" id="typing"></p>
+
+    <button id="nextBtn" style="display:none"
+    onclick="nextScreen('screen4')">
+      Celebrate Our Love 💕
+    </button>
+
+  </div>
+
+
+  <!-- SCREEN 4 -->
+  <div class="card screen" id="screen4">
+
+    <h1>Our Memories ✨</h1>
+
+    <div class="gallery">
+      <img src="img1.jpg">
+      <img src="img2.jpg">
+      <img src="img3.jpg">
+      <img src="img4.jpg">
+    </div>
+
+    <button onclick="nextScreen('screen5')">
+      Next ❤️
+    </button>
+
+  </div>
+
+
+  <!-- SCREEN 5 -->
+  <div class="card screen" id="screen5">
+
+    <h1>Forever Yours 💖</h1>
+
+    <p>
+      Thank you for every smile,
+      every memory,
+      every moment.
+      
+      I love you endlessly ❤️
+    </p>
+
+  </div>
+
+</div>
+
+<script>
+
+/* stars */
+for(let i=0;i<120;i++){
+
+  let star=document.createElement('div');
+  star.className='star';
+
+  star.style.left=Math.random()*100+'vw';
+  star.style.top=Math.random()*100+'vh';
+
+  star.style.animationDelay=Math.random()*2+'s';
+
+  document.getElementById('stars').appendChild(star);
+}
+
+/* fireworks */
+setInterval(()=>{
+
+  let f=document.createElement('div');
+
+  f.className='firework';
+
+  f.innerHTML='🎆';
+
+  f.style.left=Math.random()*100+'vw';
+
+  document.body.appendChild(f);
+
+  setTimeout(()=>{
+    f.remove();
+  },2000);
+
+},700);
+
+
+function nextScreen(id){
+
+  document.querySelectorAll('.screen').forEach(s=>{
+    s.classList.remove('active');
+  });
+
+  document.getElementById(id).classList.add('active');
+
+  document.getElementById('bgMusic').play().catch(()=>{});
+
+  if(id==='screen3'){
+    startTyping();
+  }
+}
+
+
+const text=`Happy Birthday My Love ❤️
+
+Tum meri life ka sabse beautiful part ho...
+
+Main bas itna kehna chahta hoon ki tumhare bina sab adhura lagta hai.
+
+Thank you for being mine 💖`;
+
+let i=0;
+
+function startTyping(){
+
+  let box=document.getElementById('typing');
+  let btn=document.getElementById('nextBtn');
+
+  box.innerHTML='';
+  btn.style.display='none';
+  i=0;
+
+  function type(){
+
+    if(i<text.length){
+
+      box.innerHTML += text.charAt(i)==='\n' ? '<br>' : text.charAt(i);
+
+      i++;
+
+      setTimeout(type,45);
+
+    }else{
+
+      btn.style.display='inline-block';
+    }
+  }
+
+  type();
+}
+
+</script>
+
+</body>
+</html>
